@@ -241,7 +241,8 @@ if [[ "${PHP_VERSION}" ]]; then
     for ext in "${!exts[@]}"; do # loop over keys in case the array is empty or else it'll error out
         install_ext "${exts[$ext]}" $ext_source
     done
-    
+    # override mongo extensions 
+    source $BP_DIR/support/build/extensions/no-debug-non-zts-20121212/mongo
     # special treatment for New Relic; we enable it if we detect a license key for it
     install_newrelic_ext
 
